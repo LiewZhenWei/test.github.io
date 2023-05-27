@@ -1,54 +1,121 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>my cat website</title>
-        <link rel="stylesheet" href="mystyle.css">
+        <title>This is test</title>
         <meta charset="utf-8">
-        <meta name="keywords" content="cat,website">
-        <meta name="author" conten="Liew Zhen Wei">
-        <meta name="description" content="This is about cat website">
-        <meta name="ID" content="110403557">
-
+        <style>
+        body{
+            font-size:24px;
+            padding:24px;
+            background-color:white;
+            color:black;
+        }
+        .dark{
+            background-color:black;
+            color:white;
+        }
+        </style>
     </head>
-    <body bgcolor="pink">
-        
-        <p style="color:black" align="center"><b>Welcome to 110403557 cat website</b></p>
-        <hr color="red" size="30">
+    <body>
+        <div>
+            <label>Please enter your height(cm)</label>
+            <input id="height" type="text" placeholder="ex.180" value=""/>
+            <br>
+            <label>Please enter your weight(kg)</label>
+            <input id="weight" type="text" placeholder="ex.80" value=""/>
+            <br>
+            <input id="button" type="button" value="submit"/>
+            <hr>
+            Result:<p class="summary"></p>
+        </div>
+        <div>
+            <h2>JavaScript in myscript.js</h2>
+            <p id="click">3+11=</p>
+            <button type="button" onclick="document.write(3+11)">Click</button>
+        </div>
+        <div>
+            <h1>window open</h1>
+            <a href="#" onclick="open('https://im.mgt.ncu.edu.tw','IM department',config='height=300,width=200');">See more</a>
+        </div>
+        <div>
+            <h3>print</h3>
+            <button type="button" onclick="print()">print</button>
+        </div>
+        <div>
+            <h4>confirm</h4>
+            <button onclick="game()">online poker</button>
+            <p id="result"></p>
+        </div>
+        <div>
+            <h5>prompt</h5>
+            <button onclick="asking()">Start</button>
+            <p id="resul"></p>
+        </div>
+        <div>
+            <button type="button" onclick="document.getElementById('datetim').innerHTML=Date()">Click date</button>
+            <p id="datetim"></p>
+        </div>
+        <div>
+            <button onclick="myback()"> change </button>
+        </div>
+        <script>
+            var summary=document.querySelector('.summary');
 
-        <table border="1" align="center" cellpadding="40"bgcolor="yellow">
-            <caption color="green"><b>Cat intro</b></caption>
-                <thead>
-                    <tr bgcolor="orange">
-                        <th>名字</th>
-                        <th>照片</th>
-                        <th>說明</th>
-                        <th>出處</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="num">1.</td>
-                        <td class="name">瞇瞇眼</td>
-                        <td class="pic">
-                            <img src="image/Cat03.jpg" alt="瞇瞇眼貓" height="100" width="100">
-                        </td>
-                        <td>
-                            <ol>
-                                <li>它在<span style="background-color: bisque">馬來西亞</li>
-                                <li>黑色</li>
-                                <li>small</li>
-                            </ol>
-                        </td>
-                        <td>
-                            <a href="https://www.nbcnews.com/think/opinion/cats-cute-furry-cuddly-invasive-alien-species-rcna41768" target="blank">melaka</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="num">2.</td>
-                        <td colspan="4">None</td>
-                    </tr>
-                </tbody>
-        </table>
-        <hr color="red" size="30">
+            document.getElementById('button').onclick=function(){
+                var result='';
+                var height=parseInt(document.getElementById('height').value)/100;
+                var weight=parseInt(document.getElementById('weight').value);
+                var height_square=height*height;
+                var BMI=weight/height_square;
+                if(BMI<=18){
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'below baseline';
+                }
+                else if(18<BMI && BMI<=25){
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'baseline';
+                }
+                else{
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'above baseline';
+                }
+                summary.innerHTML = result;
+            }
+        </script>
+        <script>
+            function myback(){
+                var element = document.body;
+                element.classList.toggle("dark");
+            }
+        </script>
+        <script src="./myscript.js"></script>
+        <script>
+                function game(){
+                    var msgl;
+                    if(confirm("r u sure to all in?")){
+                        msgl="computer win";
+                    }
+                    else{
+                        msgl="connection error";
+                    }
+                    document.getElementById("result").innerHTML=msgl;
+                }
+        </script>
+        <script>
+            function asking(){
+                var msg;
+                var username=prompt("Please enter your name: ");
+                if(username == null || username =="  "){
+                    msg="Invalid";
+                }
+                else{
+                    msg="HI"+username+",welcome";
+                }
+                document.getElementById("resul").innerHTML=msg;
+            }
+        </script>
+        <script>
+            console.log('halo world');
+        </script>
     </body>
 </html>
