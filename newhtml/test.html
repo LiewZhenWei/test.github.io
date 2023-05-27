@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>This is test</title>
+        <meta charset="utf-8">
+        <style>
+        body{
+            font-size:24px;
+            padding:24px;
+            background-color:white;
+            color:black;
+        }
+        .dark{
+            background-color:black;
+            color:white;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <label>Please enter your height(cm)</label>
+            <input id="height" type="text" placeholder="ex.180" value=""/>
+            <br>
+            <label>Please enter your weight(kg)</label>
+            <input id="weight" type="text" placeholder="ex.80" value=""/>
+            <br>
+            <input id="button" type="button" value="submit"/>
+            <hr>
+            Result:<p class="summary"></p>
+        </div>
+        <div>
+            <h2>JavaScript in myscript.js</h2>
+            <p id="click">3+11=</p>
+            <button type="button" onclick="document.write(3+11)">Click</button>
+        </div>
+        <div>
+            <h1>window open</h1>
+            <a href="#" onclick="open('https://im.mgt.ncu.edu.tw','IM department',config='height=300,width=200');">See more</a>
+        </div>
+        <div>
+            <h3>print</h3>
+            <button type="button" onclick="print()">print</button>
+        </div>
+        <div>
+            <h4>confirm</h4>
+            <button onclick="game()">online poker</button>
+            <p id="result"></p>
+        </div>
+        <div>
+            <h5>prompt</h5>
+            <button onclick="asking()">Start</button>
+            <p id="resul"></p>
+        </div>
+        <div>
+            <button type="button" onclick="document.getElementById('datetim').innerHTML=Date()">Click date</button>
+            <p id="datetim"></p>
+        </div>
+        <div>
+            <button onclick="myback()"> change </button>
+        </div>
+        <script>
+            var summary=document.querySelector('.summary');
+
+            document.getElementById('button').onclick=function(){
+                var result='';
+                var height=parseInt(document.getElementById('height').value)/100;
+                var weight=parseInt(document.getElementById('weight').value);
+                var height_square=height*height;
+                var BMI=weight/height_square;
+                if(BMI<=18){
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'below baseline';
+                }
+                else if(18<BMI && BMI<=25){
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'baseline';
+                }
+                else{
+                    BMI=BMI.toFixed(2);
+                    result=BMI+'above baseline';
+                }
+                summary.innerHTML = result;
+            }
+        </script>
+        <script>
+            function myback(){
+                var element = document.body;
+                element.classList.toggle("dark");
+            }
+        </script>
+        <script src="./myscript.js"></script>
+        <script>
+                function game(){
+                    var msgl;
+                    if(confirm("r u sure to all in?")){
+                        msgl="computer win";
+                    }
+                    else{
+                        msgl="connection error";
+                    }
+                    document.getElementById("result").innerHTML=msgl;
+                }
+        </script>
+        <script>
+            function asking(){
+                var msg;
+                var username=prompt("Please enter your name: ");
+                if(username == null || username =="  "){
+                    msg="Invalid";
+                }
+                else{
+                    msg="HI"+username+",welcome";
+                }
+                document.getElementById("resul").innerHTML=msg;
+            }
+        </script>
+        <script>
+            console.log('halo world');
+        </script>
+    </body>
+</html>
